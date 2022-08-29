@@ -3,8 +3,8 @@
 ## Como instalar el projecto
 
 ### Requisitos
-- node.js (yo utilizo la v16.16.0)
-- npm
+- [node.js](https://nodejs.org/en/) (yo utilizo la v16.16.0)
+- npm (viene con node.js)
 
 ### Instalacion
 

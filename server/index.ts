@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(join(__dirname, '../client/dist')))
 
 io.on('connection', socket => {
-  console.log(socket.id)
+  console.log('new user connected: id ->', socket.id)
 
   socket.on('message', body => {
     console.log(body)
@@ -28,7 +28,7 @@ io.on('connection', socket => {
   })
 
   socket.on('disconnect', reason => {
-    console.log('bye', reason)
+    console.log('user disconected: reason ->', reason)
   })
 })
 
