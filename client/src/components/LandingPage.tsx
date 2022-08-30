@@ -6,7 +6,7 @@ import {
 
 import Footer from './Footer'
 import Hero from './Hero'
-import MapViewer from './MapViewer'
+import SocketPlayground from './SocketPlayground'
 import Survey from './Survey'
 
 const theme = createTheme();
@@ -16,7 +16,7 @@ function LandingPage() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Hero />
-      <MapViewer />
+      <SocketPlayground />
       <Survey />
       <Footer />
     </ThemeProvider>
