@@ -1,10 +1,12 @@
 import 'leaflet/dist/leaflet.css'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { LatLngExpression } from 'leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 export default function MapViewer() {
+  const position: LatLngExpression = [-33.4727092, -70.7699141]
   return (
     <MapContainer
-      center={[-33.4727092, -70.7699141]}
+      center={position}
       zoom={11}
       scrollWheelZoom={false}
     >
@@ -12,7 +14,7 @@ export default function MapViewer() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[-33.4727092, -70.7699141]}>
+      <Marker position={position}>
         <Popup>
           Bienvenido a Santiago
         </Popup>
