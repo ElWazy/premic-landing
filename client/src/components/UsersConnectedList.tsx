@@ -1,17 +1,7 @@
 import { List, ListItem, ListItemText } from "@mui/material"
+import User from "../models/User"
 
-function UsersConnectedList() {
-  let items = []
-  for (let i = 0; i < 50; i++) {
-    items.push(
-      <ListItem>
-        <ListItemText>
-          {i} User connected
-        </ListItemText>
-      </ListItem>
-    )
-  }
-
+function UsersConnectedList({ users }: { users: User[] }) {
   return (
     <List
       sx={{
@@ -23,7 +13,13 @@ function UsersConnectedList() {
         overflow: 'auto'
       }}
     >
-      {items}
+      {users.map((user, index) => (
+        <ListItem key={index}>
+          <ListItemText>
+            {index} User connected
+          </ListItemText>
+        </ListItem>
+      ))}
     </List>
   )
 }

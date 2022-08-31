@@ -22,9 +22,9 @@ app.use(express.static(join(__dirname, '../client/dist')))
 io.on('connection', socket => {
   console.log('new user connected: id ->', socket.id)
 
-  socket.on('message', body => {
+  socket.on('coordinates', body => {
     console.log(body)
-    socket.broadcast.emit('message', body)
+    socket.broadcast.emit('coordinates', body)
   })
 
   socket.on('disconnect', reason => {
