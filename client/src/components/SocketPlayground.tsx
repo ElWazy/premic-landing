@@ -6,10 +6,9 @@ import {
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
-
-import MapViewer from './MapViewer'
-
 import User from '../models/User'
+
+import MapViewer from './Map/MapViewer'
 
 const socket = io('/')
 

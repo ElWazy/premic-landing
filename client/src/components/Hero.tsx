@@ -24,7 +24,6 @@ function Hero() {
         >
           Premic
         </Typography>
-        
         <Typography variant="h5" align="center" color="text.secondary" paragraph>
           No vuelvas a esperar la locomoción colectiva y ten control de tu tiempo.
         </Typography>
