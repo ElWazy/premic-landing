@@ -3,6 +3,7 @@ import {
   Container,
   Typography
 } from '@mui/material'
+import { blueGrey } from '@mui/material/colors'
 
 function Hero() {
   return (
@@ -23,8 +24,12 @@ function Hero() {
         >
           Premic
         </Typography>
+        
         <Typography variant="h5" align="center" color="text.secondary" paragraph>
           No vuelvas a esperar la locomoción colectiva y ten control de tu tiempo.
+        </Typography>
+        <Typography variant="subtitle2" align="center" color={blueGrey[600]}>
+          ¡Toca o has click en el mapa!
         </Typography>
       </Container>
     </Box>

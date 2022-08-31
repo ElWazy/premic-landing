@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
 import MapViewer from './MapViewer'
-import UsersConnectedList from './UsersConnectedList'
 
 import User from '../models/User'
 
@@ -38,7 +37,6 @@ function SocketPlayground() {
           spacing={{ sm: 6, md: 2 }}
         >
           <MapViewer />
-          <UsersConnectedList users={users} />
         </Stack>
       </Card>
     </Container>
