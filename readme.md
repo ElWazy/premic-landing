@@ -14,14 +14,7 @@ git clone https://github.com/ElWazy/premic.git
 cd premic
 npm i
 
-cd client
-npm i
-
-cd ..
-npm run build
-npm compile
-
-node ./dist/index.js
+npm run dev
 ```
 
 ## Tecnologias
