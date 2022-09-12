@@ -1,9 +1,7 @@
 import 'leaflet/dist/leaflet.css'
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 
 import LocationMarker from './LocationMarker'
-
-import geoData from '../../assets/map.json'
 
 export default function MapViewer() {
 
@@ -18,7 +16,6 @@ export default function MapViewer() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMarker />
-      <GeoJSON data={geoData} />
     </MapContainer>
   )
 }

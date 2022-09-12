@@ -17,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(join(__dirname, '../client/dist')))
+app.use(express.static(join(__dirname, '../../client/dist')))
 
 io.on('connection', socket => {
   console.log('new user connected: id ->', socket.id)
