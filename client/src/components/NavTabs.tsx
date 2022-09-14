@@ -1,38 +1,30 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Tab,
-  Tabs
-} from '@mui/material'
+import Container from '@mui/material/Container'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
 
 import {
   Link,
   matchPath,
   useLocation,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 function useRouteMatch(patterns: readonly string[]) {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   for (let i = 0; i < patterns.length; i += 1) {
-    const pattern = patterns[i];
-    const possibleMatch = matchPath(pattern, pathname);
+    const pattern = patterns[i]
+    const possibleMatch = matchPath(pattern, pathname)
     if (possibleMatch !== null) {
-      return possibleMatch;
+      return possibleMatch
     }
   }
 
-  return null;
+  return null
 }
 
 function MyTabs() {
-  // You need to provide the routes in descendant order.
-  // This means that if you have nested routes like:
-  // users, users/new, users/edit.
-  // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routeMatch = useRouteMatch(['/sign-in', '/', '/sign-up']);
-  const currentTab = routeMatch?.pattern?.path;
+  const routeMatch = useRouteMatch(['/sign-in', '/', '/sign-up'])
+  const currentTab = routeMatch?.pattern?.path
 
   return (
     <Tabs value={currentTab} centered>

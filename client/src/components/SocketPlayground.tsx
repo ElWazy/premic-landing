@@ -1,14 +1,12 @@
-import {
-  Card,
-  Container,
-  Divider,
-  Stack
-} from '@mui/material'
-import { useEffect, useState } from 'react'
+import Card from '@mui/material/Card'
+import Container from '@mui/material/Container'
+import Divider from '@mui/material/Divider'
+import Stack from '@mui/material/Stack'
 import io from 'socket.io-client'
+import { useEffect, useState } from 'react'
 
-import User from '../models/User'
 import MapViewer from './Map/MapViewer'
+import User from '../models/User'
 
 const socket = io('/')
 

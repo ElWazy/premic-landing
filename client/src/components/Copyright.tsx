@@ -1,7 +1,5 @@
-import {
-  Link,
-  Typography
-} from '@mui/material';
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
 
 function Copyright() {
   return (

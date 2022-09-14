@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom"
 
 import LandingPage from "./LandingPage"
+import NoMatch from "./NoMatch"
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
-import NoMatch from "./NoMatch"
 import SocketPlayground from "./SocketPlayground"
 
 function Nav() {
