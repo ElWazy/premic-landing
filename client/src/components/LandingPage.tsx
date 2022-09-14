@@ -1,13 +1,13 @@
 import {
   CssBaseline,
-  createTheme,
   ThemeProvider,
+  createTheme,
 } from '@mui/material'
+import { Outlet } from 'react-router-dom';
 
 import Footer from './Footer'
 import Hero from './Hero'
-import SocketPlayground from './SocketPlayground'
-import Survey from './Survey'
+import NavTabs from './NavTabs';
 
 const theme = createTheme();
 
@@ -16,8 +16,8 @@ function LandingPage() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Hero />
-      <SocketPlayground />
-      <Survey />
+      <NavTabs />
+      <Outlet />
       <Footer />
     </ThemeProvider>
   );
