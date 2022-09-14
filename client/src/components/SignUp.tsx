@@ -9,8 +9,8 @@ import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { FormEvent } from 'react';
-import { LockOutlined } from '@mui/icons-material';
+import { FormEvent } from 'react'
+import LockOutlined from '@mui/icons-material/LockOutlined'
 import { ThemeProvider, createTheme } from '@mui/material'
 
 const theme = createTheme()
