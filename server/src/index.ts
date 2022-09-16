@@ -1,8 +1,8 @@
-import express from 'express'
-import { Server as SocketServer } from 'socket.io'
-import http from 'http'
 import cors from 'cors'
+import express from 'express'
+import http from 'http'
 import morgan from 'morgan'
+import { Server as SocketServer } from 'socket.io'
 import { join } from 'path'
 
 const PORT = process.env.PORT || 5000
@@ -17,17 +17,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(join(__dirname, '../../client/dist')))
 
 io.on('connection', socket => {
-  console.log('new user connected: id ->', socket.id)
-
-  socket.on('coordinates', body => {
-    console.log(body)
-    socket.broadcast.emit('coordinates', body)
-  })
-
-  socket.on('disconnect', reason => {
-    console.log('user disconected: reason ->', reason)
-  })
+  console.log(socket.id)
 })
 
 server.listen(PORT)
-console.log(`server on port ${PORT}`)

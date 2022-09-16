@@ -3,10 +3,10 @@ import { Marker, Popup, useMapEvents } from 'react-leaflet'
 import { useState } from 'react'
 
 function LocationMarker() {
-  const [position, setPosition] = useState<LatLngExpression>({ lat: 0, lng: 0})
+  const [position, setPosition] = useState<LatLngExpression>({ lat: 0, lng: 0 })
   const map = useMapEvents({
     click() {
-      map.locate()
+      map.locate({ enableHighAccuracy: true, watch: true })
     },
     locationfound(e) {
       setPosition(e.latlng)

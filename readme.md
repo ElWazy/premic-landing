@@ -37,3 +37,11 @@ npm run dev
 ### Map
 - leaflet
 - leaflet-react
+
+### Inspiration / Special Thank's to
+
+- [Fazt](https://github.com/FaztTech)
+  - [leaflet-node](https://github.com/FaztTech/leaflet_node)
+  - [react-express-sockets](https://github.com/FaztWeb/react-express-sockets)
+  - [nodejs-leaflet-socketio](https://github.com/FaztWeb/nodejs-leaflet-socketio)
+- [burritorepo/Leaflet-RealTime-Tracking](https://github.com/burritorepo/Leaflet-RealTime-Tracking)

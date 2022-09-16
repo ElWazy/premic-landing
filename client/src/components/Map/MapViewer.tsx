@@ -4,11 +4,11 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import LocationMarker from './LocationMarker'
 
 export default function MapViewer() {
-
+  const coords = [-34.1640079, -70.7709722]
   return (
     <MapContainer
-      center={{ lat: -34.1701297, lng: -70.7384822 }}
-      zoom={17}
+      center={{ lat: coords[0], lng: coords[1] }}
+      zoom={10}
       scrollWheelZoom={false}
     >
       <TileLayer
