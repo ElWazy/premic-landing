@@ -1,8 +1,8 @@
 import L from 'leaflet'
 
 const UserIcon = L.icon({
-  iconUrl: require('../../assets/user.svg'),
-  iconRetinaUrl: require('../../assets/user.svg'),
+  iconUrl: '/user.svg',
+  iconRetinaUrl: '/user.svg',
   iconSize: [35, 35],
   className: "leaflet-user-icon"
 })
