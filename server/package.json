@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "description": "Rest API service for Premic App",
   "scripts": {
-    "dev": "ts-node-dev ./src/index"
+    "dev": "ts-node-dev --respawn ./src/index",
+    "build": "tsc; NODE_ENV=production node ./dist/index"
   },
   "author": "ElWazy <santiago.fierro4@outlook.cl",
   "license": "MIT",
