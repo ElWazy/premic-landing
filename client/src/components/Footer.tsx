@@ -5,7 +5,7 @@ import Copyright from './Copyright'
 
 function Footer() {
   return (
-    <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+    <Box sx={{ bgcolor: 'background.paper', pb: 4 }} component="footer">
       <Typography variant="h6" align="center" gutterBottom>
         Team Yuntas
       </Typography>
