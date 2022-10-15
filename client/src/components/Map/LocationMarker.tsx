@@ -3,18 +3,19 @@ import { Marker, Popup } from 'react-leaflet'
 import UserIcon from './UserIcon'
 import useLocation from '../../hooks/useLocation'
 
-
 function LocationMarker() {
-  const { position } = useLocation()
+  const { positions } = useLocation()
 
-  return position === null ? null : (
-    <Marker
-      position={position}
-      icon={UserIcon}
-    >
-      <Popup>You are here</Popup>
-    </Marker>
-  )
+  return positions === null ? null : positions.map(position => (
+    <div id={position.id}>
+      <Marker
+        position={position.coords}
+        icon={UserIcon}
+      >
+        <Popup>You are here</Popup>
+      </Marker>
+    </div>
+  ))
 }
 
 export default LocationMarker

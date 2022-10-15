@@ -1,19 +1,36 @@
 import { LatLngExpression } from 'leaflet'
 import { useMapEvents } from 'react-leaflet'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:5000')
+const socket = io('http://localhost:5000', {
+  withCredentials: true
+})
+
+interface Location {
+  id: string;
+  coords: LatLngExpression;
+}
 
 function useLocation() {
-  const [position, setPosition] = useState<LatLngExpression>({ lat: 0, lng: 0 })
+  const [positions, setPositions] = useState<Array<Location>>([])
+
+  useEffect(() => {
+    socket.on('list', (locations) => {
+      setPositions(locations)
+    })
+
+    return () => {
+      socket.off('list')
+    }
+  }, [])
+
   const map = useMapEvents({
     click() {
       map.locate({ enableHighAccuracy: true, watch: true })
     },
     locationfound(location) {
-      setPosition(location.latlng)
-      socket.emit('update_location', location.latlng)
+      socket.emit('update', location.latlng)
       map.flyTo(location.latlng, map.getZoom())
     },
     locationerror(error) {
@@ -21,7 +38,7 @@ function useLocation() {
     }
   })
 
-  return { position }
+  return { positions }
 }
 
 export default useLocation
