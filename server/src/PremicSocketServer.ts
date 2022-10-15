@@ -1,3 +1,4 @@
+import cors from 'cors'
 import express from 'express'
 import http from 'http'
 import morgan from 'morgan'
@@ -6,13 +7,9 @@ import { join } from 'path'
 
 const app = express()
 const server = http.createServer(app)
-const io = new SocketServer(server, {
-  cors: {
-    origin: "http://127.0.0.1:5173",
-    credentials: true
-  }
-})
+const io = new SocketServer(server)
 
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 
