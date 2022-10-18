@@ -42,6 +42,7 @@ npm run dev
 
 - [Fazt](https://github.com/FaztTech)
   - [leaflet-node](https://github.com/FaztTech/leaflet_node)
-  - [react-express-sockets](https://github.com/FaztWeb/react-express-sockets)
   - [nodejs-leaflet-socketio](https://github.com/FaztWeb/nodejs-leaflet-socketio)
+  - [react-leaflet-example](https://github.com/FaztWeb/react-leaflet-example)
+  - [react-express-sockets](https://github.com/FaztWeb/react-express-sockets)
 - [burritorepo/Leaflet-RealTime-Tracking](https://github.com/burritorepo/Leaflet-RealTime-Tracking)

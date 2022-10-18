@@ -3,7 +3,9 @@ import { useMapEvents } from 'react-leaflet'
 import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
-const socket = io()
+const socket = io('http://localhost:5000', {
+  withCredentials: true
+})
 
 interface Location {
   id: string;
@@ -28,6 +30,19 @@ function useLocation() {
       map.locate({ enableHighAccuracy: true, watch: true })
     },
     locationfound(location) {
+      setPositions((lastPositions) => {
+        const newPosition = {
+          id: socket.id,
+          coords: location.latlng
+        }
+        const positionFinded = lastPositions.find(position => position.id === newPosition.id)
+        if (positionFinded === undefined) return [...lastPositions, newPosition]
+
+        return lastPositions.map(position => {
+          if (position.id === positionFinded.id) return newPosition
+          return position
+        })
+      })
       socket.emit('update', location.latlng)
       map.flyTo(location.latlng, map.getZoom())
     },

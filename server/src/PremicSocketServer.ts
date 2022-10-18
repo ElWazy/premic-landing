@@ -1,4 +1,3 @@
-import cors from 'cors'
 import express from 'express'
 import http from 'http'
 import morgan from 'morgan'
@@ -7,9 +6,13 @@ import { join } from 'path'
 
 const app = express()
 const server = http.createServer(app)
-const io = new SocketServer(server)
+const io = new SocketServer(server, {
+  cors: {
+    origin: 'http://localhost:5173',
+    credentials: true
+  }
+})
 
-app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 
@@ -39,7 +42,7 @@ io.on('connection', socket => {
     socket.broadcast.emit('list', result)
   })
 
-  io.on('disconnect', () => {
+  socket.on('disconnect', (_reason) => {
     locations.delete(socket.id)
     const result = Array.from(locations.values())
     socket.broadcast.emit('list', result)
