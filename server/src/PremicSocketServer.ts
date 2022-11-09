@@ -1,5 +1,7 @@
 import express from 'express'
+import { hashSync } from 'bcrypt'
 import http from 'http'
+import { instrument } from '@socket.io/admin-ui'
 import morgan from 'morgan'
 import { Server as SocketServer } from 'socket.io'
 import { join } from 'path'
@@ -8,7 +10,7 @@ const app = express()
 const server = http.createServer(app)
 const io = new SocketServer(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: ['https://admin.socket.io'],
     credentials: true
   }
 })
@@ -47,6 +49,14 @@ io.on('connection', socket => {
     const result = Array.from(locations.values())
     socket.broadcast.emit('list', result)
   })
+})
+
+instrument(io, {
+  auth: {
+    type: "basic",
+    username: "elmamadisimo",
+    password: hashSync("m4sT3r", 10)
+  }
 })
 
 export default server
