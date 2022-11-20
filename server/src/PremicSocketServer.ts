@@ -1,10 +1,14 @@
 import express from 'express'
 import morgan from 'morgan'
+import helmet from 'helmet'
 import http from 'http'
 import { join } from 'path'
 import { hashSync } from 'bcrypt'
 import { instrument } from '@socket.io/admin-ui'
 import { Server as SocketServer } from 'socket.io'
+
+import { trackerSocket } from './routes/socket/trackerSocket'
+import companyRouter from './routes/CompanyRouter'
 
 const app = express()
 const server = http.createServer(app)
@@ -15,32 +19,20 @@ const io = new SocketServer(server, {
   }
 })
 
+app.use(express.json())
 app.use(morgan('dev'))
+app.use(helmet())
 app.use(express.urlencoded({ extended: false }))
+
+app.use('/api/company', companyRouter)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../../client/dist')))
 }
 
-import { Coords } from './types/Coords'
-import { Location } from './types/Location'
-
-const locations: Map<string, Location> = new Map()
 
 io.on('connection', socket => {
-  socket.on('update', (coords: Coords) => {
-    const location = { id: socket.id, coords }
-    locations.set(socket.id, location)
-
-    const result = Array.from(locations.values())
-    socket.broadcast.emit('list', result)
-  })
-
-  socket.on('disconnect', (_reason) => {
-    locations.delete(socket.id)
-    const result = Array.from(locations.values())
-    socket.broadcast.emit('list', result)
-  })
+  trackerSocket(socket)
 })
 
 instrument(io, {
