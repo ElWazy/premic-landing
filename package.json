@@ -1,7 +1,7 @@
 {
   "name": "premic",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Aplicacion que trackea en tiempo real la posicion de la locomocion colectiva",
   "workspaces": [
     "client",

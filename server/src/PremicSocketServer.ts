@@ -1,17 +1,17 @@
 import express from 'express'
-import { hashSync } from 'bcrypt'
-import http from 'http'
-import { instrument } from '@socket.io/admin-ui'
 import morgan from 'morgan'
-import { Server as SocketServer } from 'socket.io'
+import http from 'http'
 import { join } from 'path'
+import { hashSync } from 'bcrypt'
+import { instrument } from '@socket.io/admin-ui'
+import { Server as SocketServer } from 'socket.io'
 
 const app = express()
 const server = http.createServer(app)
 const io = new SocketServer(server, {
+  path: '/tracker/',
   cors: {
-    origin: ['https://admin.socket.io'],
-    credentials: true
+    origin: '*'
   }
 })
 
@@ -22,16 +22,8 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../../client/dist')))
 }
 
-interface Coords {
-  lat: number;
-  lng: number;
-}
-
-
-interface Location {
-  id: string;
-  coords: Coords;
-}
+import { Coords } from './types/Coords'
+import { Location } from './types/Location'
 
 const locations: Map<string, Location> = new Map()
 
