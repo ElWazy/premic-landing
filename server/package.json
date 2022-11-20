@@ -1,7 +1,7 @@
 {
   "name": "premic-api",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Rest API service for Premic App",
   "scripts": {
     "dev": "ts-node-dev --respawn ./src/index",
@@ -14,11 +14,12 @@
     "bcrypt": "5.1.0",
     "cors": "2.8.5",
     "express": "4.18.1",
-    "helmet": "^6.0.0",
-    "morgan": "1.10.0"
+    "helmet": "6.0.0",
+    "morgan": "1.10.0",
+    "zod": "3.19.1"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
+    "@types/bcrypt": "5.0.0",
     "@types/express": "4.17.13",
     "@types/morgan": "1.9.3",
     "@types/node": "18.7.18"
