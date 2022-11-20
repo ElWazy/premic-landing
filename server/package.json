@@ -1,7 +1,7 @@
 {
   "name": "premic-api",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Rest API service for Premic App",
   "scripts": {
     "dev": "ts-node-dev --respawn ./src/index",
