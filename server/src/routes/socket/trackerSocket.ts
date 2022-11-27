@@ -1,6 +1,6 @@
 import { Socket } from "socket.io"
-import { Coords } from '../../types/Coords'
-import { Location } from "../../types/Location"
+import { Coords } from '../../models/Coords'
+import { Location } from "../../models/Location"
 
 const locations: Map<string, Location> = new Map()
 
