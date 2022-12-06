@@ -4,6 +4,8 @@ import { collections } from "../services/database.service"
 
 export const companyRouter = Router()
 
+const resourceName = 'Company'
+
 companyRouter.get('/', async (_req: Request, res: Response) => {
   try {
     const companies = await collections.companies?.find({}).toArray()
@@ -43,8 +45,8 @@ companyRouter.put('/:id', async (req: Request, res: Response) => {
     const result = await collections.companies?.updateOne(query, update, options)
 
     result
-      ? res.status(200).send(`Successfully updated company with id ${_id}`)
-      : res.status(304).send(`Company with id ${_id} not updated`)
+      ? res.status(200).send(`Successfully updated ${resourceName} with id ${_id}`)
+      : res.status(304).send(`${resourceName} with id ${_id} not updated`)
   } catch (error) {
     if (error instanceof MongoError) {
       console.error(error.message)
@@ -61,11 +63,11 @@ companyRouter.delete('/:id', async (req: Request, res: Response) => {
     const result = await collections.companies?.deleteOne(query)
 
     if (result && result.deletedCount) {
-      res.status(202).send(`Successfully removed company with id ${_id}`)
+      res.status(202).send(`Successfully removed ${resourceName} with id ${_id}`)
     } else if (!result) {
-      res.status(400).send(`Failed to remove company with id ${_id}`)
+      res.status(400).send(`Failed to remove ${resourceName} with id ${_id}`)
     } else if (!result.deletedCount) {
-      res.status(404).send(`Company with id ${_id} does not exist`)
+      res.status(404).send(`${resourceName} with id ${_id} does not exist`)
     }
   } catch (error) {
     if (error instanceof MongoError) {
