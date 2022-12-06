@@ -4,12 +4,16 @@ import Company from '../models/Company'
 import User from '../models/User'
 import { Location } from '../models/Location'
 import Price from '../models/Price'
+import Schedule from '../models/Schedule'
+import Bus from '../models/Bus'
 
 export const collections: {
   companies?: Collection<Company>,
   users?: Collection<User>,
   locations?: Collection<Location>,
-  prices?: Collection<Price>
+  prices?: Collection<Price>,
+  schedules?: Collection<Schedule>,
+  buses?: Collection<Bus>
 } = {}
 
 export async function connectToDatabase() {
@@ -33,6 +37,12 @@ export async function connectToDatabase() {
 
   const pricesCollection = database.collection<Price>('prices')
   collections.prices = pricesCollection
+
+  const schedulesCollection = database.collection<Schedule>('schedules')
+  collections.schedules = schedulesCollection
+
+  const busesCollection = database.collection<Bus>('buses')
+  collections.buses = busesCollection
 
   console.log(
     `
