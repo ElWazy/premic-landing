@@ -3,11 +3,13 @@ import * as dotenv from 'dotenv'
 import Company from '../models/Company'
 import User from '../models/User'
 import { Location } from '../models/Location'
+import Price from '../models/Price'
 
 export const collections: {
   companies?: Collection<Company>,
   users?: Collection<User>,
-  locations?: Collection<Location>
+  locations?: Collection<Location>,
+  prices?: Collection<Price>
 } = {}
 
 export async function connectToDatabase() {
@@ -28,6 +30,9 @@ export async function connectToDatabase() {
 
   const locationsCollection = database.collection<Location>('locations')
   collections.locations = locationsCollection
+
+  const pricesCollection = database.collection<Price>('prices')
+  collections.prices = pricesCollection
 
   console.log(
     `
