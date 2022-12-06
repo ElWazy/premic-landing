@@ -1,21 +1,21 @@
 import { Socket } from "socket.io"
 import { Coords } from '../../models/Coords'
-import { Location } from "../../models/Location"
+import { BusCoordinate } from "../../models/BusCoordinate"
 
-const locations: Map<string, Location> = new Map()
+const busCoordinates: Map<string, BusCoordinate> = new Map()
 
 export const trackerSocket = (socket: Socket) => {
   socket.on('update', (coords: Coords) => {
     const location = { id: socket.id, coords }
-    locations.set(socket.id, location)
+    busCoordinates.set(socket.id, location)
 
-    const result = Array.from(locations.values())
+    const result = Array.from(busCoordinates.values())
     socket.broadcast.emit('list', result)
   })
 
   socket.on('disconnect', (_reason) => {
-    locations.delete(socket.id)
-    const result = Array.from(locations.values())
+    busCoordinates.delete(socket.id)
+    const result = Array.from(busCoordinates.values())
     socket.broadcast.emit('list', result)
   })
 }
