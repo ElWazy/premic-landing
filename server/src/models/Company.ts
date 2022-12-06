@@ -1,4 +1,4 @@
 export default interface Company {
-  id: string;
+  _id: string;
   name: string;
 }

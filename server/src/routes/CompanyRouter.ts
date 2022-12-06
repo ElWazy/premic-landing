@@ -17,36 +17,34 @@ companyRouter.get('/', async (_req: Request, res: Response) => {
 })
 
 companyRouter.get('/:id', async (req: Request, res: Response) => {
-  const id = req.params.id
+  const _id = req.params.id
 
   try {
-    const query = { id }
+    const query = { _id }
     const company = await collections.companies?.findOne(query)
 
     if (company) {
       res.status(200).send(company)
     }
   } catch (error) {
-    res.status(404).send(`${id} Not found`)
+    res.status(404).send(`${_id} Not found`)
   }
 })
 
 companyRouter.put('/:id', async (req: Request, res: Response) => {
-  const id = req.params.id
+  const _id = req.params.id
 
   try {
     const company = req.body
-    const query = { id }
+    const query = { _id }
+    const update = { $set: company }
+    const options = { upsert: true }
 
-    const result = await collections.companies?.updateOne(query, {
-      $set: company
-    }, {
-      upsert: true
-    })
+    const result = await collections.companies?.updateOne(query, update, options)
 
     result
-      ? res.status(200).send(`Successfully updated company with id ${id}`)
-      : res.status(304).send(`Company with id ${id} not updated`)
+      ? res.status(200).send(`Successfully updated company with id ${_id}`)
+      : res.status(304).send(`Company with id ${_id} not updated`)
   } catch (error) {
     if (error instanceof MongoError) {
       console.error(error.message)
@@ -56,18 +54,18 @@ companyRouter.put('/:id', async (req: Request, res: Response) => {
 })
 
 companyRouter.delete('/:id', async (req: Request, res: Response) => {
-  const id = req.params.id
+  const _id = req.params.id
 
   try {
-    const query = { id }
+    const query = { _id }
     const result = await collections.companies?.deleteOne(query)
 
     if (result && result.deletedCount) {
-      res.status(202).send(`Successfully removed company with id ${id}`)
+      res.status(202).send(`Successfully removed company with id ${_id}`)
     } else if (!result) {
-      res.status(400).send(`Failed to remove company with id ${id}`)
+      res.status(400).send(`Failed to remove company with id ${_id}`)
     } else if (!result.deletedCount) {
-      res.status(404).send(`Company with id ${id} does not exist`)
+      res.status(404).send(`Company with id ${_id} does not exist`)
     }
   } catch (error) {
     if (error instanceof MongoError) {
