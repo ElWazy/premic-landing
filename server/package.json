@@ -5,7 +5,7 @@
   "description": "Rest API service for Premic App",
   "scripts": {
     "dev": "ts-node-dev --respawn ./src/index",
-    "build": "tsc --build"
+    "build": "tsc --build",
     "start": "NODE_ENV=production node ./dist/index"
   },
   "author": "ElWazy <santiago.fierro4@outlook.cl",
